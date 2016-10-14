@@ -9,12 +9,25 @@
 	<name>SHISHUO CMS (http://shishuo.com/cms)</name>
 	<url>http://shishuocms.aliapp.com</url>
 	<dependencies>
+		<!-- 4 test start-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.2.11.RELEASE</version>
+		</dependency>
+		<!-- 4 test end-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -40,11 +53,7 @@
 			<artifactId>spring-aop</artifactId>
 			<version>3.2.11.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>3.2.11.RELEASE</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -96,7 +105,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -186,127 +195,127 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<systemProperties>
-						<systemProperty>
-							<key>file.encoding</key>
-							<value>UTF-8</value>
-						</systemProperty>
-					</systemProperties>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<encoding>UTF-8</encoding>
-							<outputDirectory>${project.build.directory}/classes</outputDirectory>
-							<resources>
-								<resource>
-									<directory>.</directory>
-									<includes>
-										<include>shishuocms.properties</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.13.v20130916</version>
-				<configuration>
-					<webAppConfig>
-						<contextPath>${webapp.path}</contextPath>
-						<defaultsDescriptor>webdefault.xml</defaultsDescriptor>
-					</webAppConfig>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>${webapp.port}</port>
-							<maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-					<reload>automatic</reload>
-					<scanIntervalSeconds>0</scanIntervalSeconds>
-					<!-- stopPort>${webapp.stopPort}</stopPort -->
-					<systemProperties>
-						<systemProperty>
-							<name>org.mortbay.util.URI.charset</name>
-							<value>UTF-8</value>
-						</systemProperty>
-					</systemProperties>
-					<jvmArgs>-Xmx512m -XX:PermSize=128m -XX:MaxPermSize=256m
-						-Dfile.encoding=UTF-8</jvmArgs>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
-							<daemon>true</daemon>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<configuration>
-							<target>
-								<tstamp prefix="shishuo.">
-									<format property="time" pattern="yyyyMMddHHmmss" />
-								</tstamp>
-								<copy todir="${basedir}/dist" overwrite="true">
-									<fileset
-										dir="${basedir}/target/${project.artifactId}-${project.version}" />
-								</copy>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.codehaus.mojo</groupId>-->
+				<!--<artifactId>exec-maven-plugin</artifactId>-->
+				<!--<version>1.2.1</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<goals>-->
+							<!--<goal>java</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+				<!--<configuration>-->
+					<!--<systemProperties>-->
+						<!--<systemProperty>-->
+							<!--<key>file.encoding</key>-->
+							<!--<value>UTF-8</value>-->
+						<!--</systemProperty>-->
+					<!--</systemProperties>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-resources-plugin</artifactId>-->
+				<!--<version>2.6</version>-->
+				<!--<configuration>-->
+					<!--<encoding>UTF-8</encoding>-->
+				<!--</configuration>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>copy-resources</id>-->
+						<!--<phase>process-resources</phase>-->
+						<!--<goals>-->
+							<!--<goal>copy-resources</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<encoding>UTF-8</encoding>-->
+							<!--<outputDirectory>${project.build.directory}/classes</outputDirectory>-->
+							<!--<resources>-->
+								<!--<resource>-->
+									<!--<directory>.</directory>-->
+									<!--<includes>-->
+										<!--<include>shishuocms.properties</include>-->
+									<!--</includes>-->
+								<!--</resource>-->
+							<!--</resources>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
+			<!--<plugin>-->
+				<!--<groupId>org.mortbay.jetty</groupId>-->
+				<!--<artifactId>jetty-maven-plugin</artifactId>-->
+				<!--<version>8.1.13.v20130916</version>-->
+				<!--<configuration>-->
+					<!--<webAppConfig>-->
+						<!--<contextPath>${webapp.path}</contextPath>-->
+						<!--<defaultsDescriptor>webdefault.xml</defaultsDescriptor>-->
+					<!--</webAppConfig>-->
+					<!--<connectors>-->
+						<!--<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">-->
+							<!--<port>${webapp.port}</port>-->
+							<!--<maxIdleTime>60000</maxIdleTime>-->
+						<!--</connector>-->
+					<!--</connectors>-->
+					<!--<reload>automatic</reload>-->
+					<!--<scanIntervalSeconds>0</scanIntervalSeconds>-->
+					<!--&lt;!&ndash; stopPort>${webapp.stopPort}</stopPort &ndash;&gt;-->
+					<!--<systemProperties>-->
+						<!--<systemProperty>-->
+							<!--<name>org.mortbay.util.URI.charset</name>-->
+							<!--<value>UTF-8</value>-->
+						<!--</systemProperty>-->
+					<!--</systemProperties>-->
+					<!--<jvmArgs>-Xmx512m -XX:PermSize=128m -XX:MaxPermSize=256m
+						   Dfile.encoding=UTF-8</jvmArgs>-->
+				<!--</configuration>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>start-jetty</id>-->
+						<!--<phase>pre-integration-test</phase>-->
+						<!--<goals>-->
+							<!--<goal>run</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<scanIntervalSeconds>0</scanIntervalSeconds>-->
+							<!--<daemon>true</daemon>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+					<!--<execution>-->
+						<!--<id>stop-jetty</id>-->
+						<!--<phase>post-integration-test</phase>-->
+						<!--<goals>-->
+							<!--<goal>stop</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-antrun-plugin</artifactId>-->
+				<!--<version>1.6</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<phase>package</phase>-->
+						<!--<configuration>-->
+							<!--<target>-->
+								<!--<tstamp prefix="shishuo.">-->
+									<!--<format property="time" pattern="yyyyMMddHHmmss" />-->
+								<!--</tstamp>-->
+								<!--<copy todir="${basedir}/dist" overwrite="true">-->
+									<!--<fileset-->
+										<!--dir="${basedir}/target/${project.artifactId}-${project.version}" />-->
+								<!--</copy>-->
+							<!--</target>-->
+						<!--</configuration>-->
+						<!--<goals>-->
+							<!--<goal>run</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 		</plugins>
 		<resources>
 			<resource>
@@ -321,6 +330,7 @@
 					<include>applicationContext.xml</include>
 					<include>log4j.properties</include>
 					<include>ueditor.config.json</include>
+					<include>shishuocms.properties</include>
 				</includes>
 			</resource>
 		</resources>
