@@ -1,3 +1,5 @@
+package com.service;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,12 +12,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by cc on 16-10-15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext.xml")
+@ContextConfiguration(locations = "classpath:applicationContexts.xml")
 public class BaseTest {
-    protected final Logger logger = Logger.getLogger(this.getClass());
+    protected final Logger ll = Logger.getLogger(this.getClass());
 
-    @Autowired
-    ApplicationContext ctx;
 
     @Test
     public void testEmployee(){
