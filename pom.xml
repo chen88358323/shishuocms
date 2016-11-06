@@ -321,6 +321,7 @@
 					<include>applicationContext.xml</include>
 					<include>log4j.properties</include>
 					<include>ueditor.config.json</include>
+					<include>shishuocms.properties</include>
 				</includes>
 			</resource>
 		</resources>
@@ -330,4 +331,15 @@
 		<webapp.stopPort>9090</webapp.stopPort>
 		<webapp.path>/</webapp.path>
 	</properties>
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>

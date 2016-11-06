@@ -5,7 +5,7 @@ import com.shishuo.cms.util.AuthUtils;
  */
 public class UTILTest {
     public static void main(String ad[]){
-      String str=  AuthUtils.getPassword("cctest");
+      String str=  AuthUtils.getPassword("cctestxxooblog").toLowerCase();
         System.out.println(str);
     }
 }

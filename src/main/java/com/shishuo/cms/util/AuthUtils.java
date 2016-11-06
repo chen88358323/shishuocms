@@ -18,19 +18,18 @@ import com.shishuo.cms.exception.AuthException;
  * 
  */
 public class AuthUtils {
+	private final static String  salt="xxooblog";
 
 	/**
 	 * 生产密文密码
 	 * 
 	 * @param password
 	 *            明文密码
-	 * @param email
-	 *            邮箱
 	 * @return
 	 * @throws AuthException
 	 */
 	public static String getPassword(String password) {
-		return DigestUtils.md5Hex(password).toLowerCase();
+		return DigestUtils.md5Hex(password+salt).toLowerCase();
 	}
 
 	/**
@@ -38,7 +37,7 @@ public class AuthUtils {
 	 * @return
 	 */
 	public static String MD5(String str) {
-		return DigestUtils.md5Hex(str).toLowerCase();
+		return DigestUtils.md5Hex(str+salt).toLowerCase();
 	}
 
 	/**
