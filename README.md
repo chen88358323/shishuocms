@@ -110,3 +110,11 @@ QQ群：7343505 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=83
 
   [1]: http://www.shishuo.com
 
+=======================================
+A. 媒体部分的上传测试,分类存储
+B. spider 的实现,第一期先做一个技术采摘网站
+C. 了解量级和广告联盟
+D. 图片以及笑话等项目
+
+A.设置profile
+B.修改mysql 
