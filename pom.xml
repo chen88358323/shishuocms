@@ -340,6 +340,56 @@
 		<webapp.stopPort>9090</webapp.stopPort>
 		<webapp.path>/</webapp.path>
 	</properties>
+	<profiles>
+		<!-- 开发环境配置 -->
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>development</env>
+				<package.environment>development</package.environment>
+			</properties>
+
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/development</directory>
+					</resource>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>*.xml</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<package.environment>production</package.environment>
+			</properties>
+
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/production</directory>
+					</resource>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>*.xml</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+
+	</profiles>
+
 	<repositories>
 		<repository>
 			<id>central</id>
